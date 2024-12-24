@@ -57,7 +57,7 @@ get_header();
 
   <div class="rectangle">
       <p>Welcome to the Workspace section!<br>
-         Explore and discover the best study spaces curated by studentss, for students.</p>
+         Explore and discover the best study spaces curated by students, for students.</p>
   </div>
 
   <div class="container my-4">
