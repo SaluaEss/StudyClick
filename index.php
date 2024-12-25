@@ -262,6 +262,20 @@
                 echo '<p>Une erreur est survenue. Veuillez réessayer.</p>';
             }
         }
+        // Ajout à la page "Évaluations"
+        if ($lieu_id) {
+            // Associer tous les lieux à la catégorie \"Évaluations\"
+            $evaluation_category = get_term_by('name', 'Évaluations', 'category');
+            if (!$evaluation_category) {
+                $evaluation_category = wp_insert_term('Évaluations', 'category');
+            }
+        
+            if (!is_wp_error($evaluation_category)) {
+                wp_set_post_terms($lieu_id, $evaluation_category['term_id'], 'category', true);
+            }
+        }
+        
+
         ?>
     </div>
 
