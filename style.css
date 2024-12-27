@@ -1,3 +1,157 @@
 /**
 Theme Name: Study Click
 */
+
+body {
+    font-family: 'Inter', sans-serif; /* Police de caractère principale */
+    margin: 0; /* Supprime la marge par défaut du body */
+    padding: 0; /* Supprime le padding par défaut du body */
+    background-color: #ffffff; /* Fond blanc pour la page */
+    color: #333; /* Définit la couleur du texte en gris foncé */
+}
+
+header {
+    background-color: rgb(255, 255, 255); /* Fond blanc pour le header */
+    padding: 10px 20px; /* Espacement autour du contenu du header */
+    border-bottom: none; /* Retire la bordure sous le header */
+    position: sticky; /* Fixe le header en haut de la page */
+    top: 0; /* Positionne le header en haut de la page */
+    z-index: 1000; /* Assure que le header reste au-dessus des autres éléments */
+}
+
+.navbar {
+    padding: 0.5rem 1rem; /* Ajoute du padding au navbar */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Ombre légère sous le navbar */
+}
+
+.navbar-brand img {
+    width: 40px; /* Largeur du logo */
+    height: 40px; /* Hauteur du logo */
+    object-fit: contain; /* Conserve les proportions du logo */
+}
+
+.navbar-toggler {
+    border: none; /* Enlève la bordure du bouton toggle */
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px; /* Taille du texte */
+    color: #333; /* Couleur des liens */
+    padding: 10px 20px; /* Espacement interne */
+    transition: color 0.3s, text-decoration 0.3s; /* Animation fluide */
+    text-align: center; /* Centre le texte dans chaque rubrique */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #000; /* Couleur des liens au survol */
+    text-decoration: underline; /* Sous-ligne au survol */
+}
+
+.account-icon {
+    width: 20px; /* Taille de l'icône du compte */
+    height: 20px; /* Hauteur de l'icône */
+    margin-left: 5px; /* Espacement entre le texte et l'icône */
+}
+
+/* Section Populaire */
+.popular-section {
+    padding: 40px 0; /* Espacement autour de la section */
+    background-color: #ffffff; /* Fond gris clair pour la section populaire */
+}
+
+.popular-section h1 {
+    font-family: 'Italiana', serif; /* Police du titre */
+    font-size: 36px; /* Taille du titre */
+    margin-bottom: 20px; /* Espacement sous le titre */
+    font-weight: normal; /* Poids normal du titre */
+    color: #333; /* Couleur du texte */
+}
+
+.card {
+    position: relative; /* Définit un contexte de position pour les enfants */
+    overflow: hidden; /* Empêche le débordement des éléments enfants */
+    border: none; /* Retire la bordure autour de la carte */
+}
+
+.card img {
+    width: 100%; /* L'image prend toute la largeur de la carte */
+    height: 500px; /* Hauteur fixe pour les images */
+    object-fit: cover; /* Les images remplissent l'espace sans déformation */
+    object-position: center; /* Centre l'image */
+    transition: transform 0.3s ease-in-out; /* Effet de zoom au survol */
+}
+
+.card-body {
+    padding: 15px; /* Padding autour du texte dans la carte */
+}
+
+.card-text {
+    font-size: 14px; /* Taille du texte */
+    color: #555; /* Couleur du texte */
+    margin: 0; /* Supprime la marge */
+}
+
+.card:hover .card-text {
+    opacity: 1; /* Texte visible au survol */
+    visibility: visible; /* Rendu interactif */
+}
+.card-body .card-text {
+    opacity: 0; /* Texte masqué par défaut */
+    visibility: hidden; /* Masqué pour les interactions */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Animation douce */
+    position: absolute; /* Superpose le texte sur l'image */
+    bottom: 0; /* Positionné en bas de la carte */
+    left: 0; /* Aligné à gauche */
+    right: 0; /* Aligné à droite */
+    background-color: rgb(255, 255, 255); /* Fond semi-transparent pour le texte */
+    color: #000000; /* Texte en blanc */
+    padding: 10px; /* Espacement interne */
+    text-align: center; /* Centre le texte */
+}
+
+.popular-images {
+    display: flex; /* Utilisation de Flexbox pour aligner les images */
+    justify-content: center; /* Centre les éléments horizontalement */
+    gap: 20px; /* Espacement entre les cartes */
+}
+
+footer {
+    background-color: #408d3b; /* Fond blanc pour le footer */
+    padding: 50px 20px; /* Espacement interne du footer */
+    text-align: center; /* Centre le contenu horizontalement */
+    border: none; /* Retire la bordure autour du footer */
+}
+
+.footer-container {
+    display: flex; /* Utilisation de Flexbox pour centrer le contenu */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+.footer-logo {
+    width: 40px; /* Ajuste la largeur du logo */
+    height: 40px; /* Maintient les proportions du logo */
+}
+
+.citation p {
+    font-family: 'Italiana', serif; /* Applique la police Italiana */
+    font-size: 20px; /* Ajuste la taille de la police */
+    text-align: center; /* Centre le texte */
+    color: #000000; /* Couleur du texte */
+    margin: 20px 0; /* Marge autour de la citation */
+}
+
+.logo-tiktok img {
+    width: 40px; /* Ajuste la taille du logo TikTok */
+    height: 40px; /* Maintient les proportions du logo */
+    margin: 0 auto; /* Centre l'image */
+    max-width: 100%; /* Assure que l'image ne dépasse pas son conteneur */
+}
+
+/* Polices supplémentaires */
+@font-face {
+    font-family: 'Italiana'; /* Déclare la police 'Italiana' */
+    src: url('../fonts/Italiana.ttf') format('truetype'); /* Chemin d'accès et format de la police */
+    font-weight: normal; /* Poids normal */
+    font-style: normal; /* Style normal */
+}
