@@ -90,7 +90,10 @@ get_header();
     else :
         echo '<p>Aucun lieu trouvé.</p>';
     endif;
+
+    
     ?>
 </main>
+
 
 <?php get_footer(); ?>

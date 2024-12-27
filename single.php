@@ -64,38 +64,9 @@ get_header();
             font-size: 12px;
             color: #555;
         }
-        .card .comment-section {
-            margin-top: 20px;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-        .card .comment-section input {
-            width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            padding: 10px 15px;
-            font-size: 14px;
-            transition: box-shadow 0.3s ease;
-        }
-        .card .comment-section input:focus {
-            border-color: #5c9f5c;
-            box-shadow: 0 0 5px rgba(92, 159, 92, 0.5);
-            outline: none;
-        }
-        .card .actions {
-            display: flex;
-            justify-content: flex-start;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .card .actions svg {
-            width: 24px;
-            height: 24px;
-            fill: #666;
-            cursor: pointer;
-        }
-        .card .actions svg:hover {
-            fill: #333;
+        /* Masquer la section des commentaires */
+        .comments-section {
+            display: none;
         }
     </style>
 
@@ -108,9 +79,8 @@ get_header();
 
             <!-- Titre et Adresse -->
             <h1><?php the_title(); ?></h1>
-            <p class="adresse"><i class="fas fa-map-marker-alt"></i> <?php echo esc_html(get_post_meta(get_the_ID(), 'adresse', true)); ?></p>
+            <p class="adresse"><?php echo esc_html(get_post_meta(get_the_ID(), 'adresse', true)); ?></p>
 
-        
             <!-- Note -->
             <div class="rating">
                 <?php
@@ -134,9 +104,9 @@ get_header();
                 ?>
             </div>
 
-            <!-- Section commentaire -->
-            <div class="comment-section">
-                <input type="text" placeholder="Ajouter un commentaire...">
+            <!-- Commentaires masqués -->
+            <div class="comments-section">
+                <?php comments_template(); ?>
             </div>
         </div>
     <?php endwhile; else : ?>

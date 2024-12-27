@@ -37,6 +37,8 @@ function register_lieu_post_type() {
 }
 add_action('init', 'register_lieu_post_type');
 
+
+
 // Ajout des règles de réécriture et des variables pour evaluations2
 add_action('init', function () {
     add_rewrite_rule(
@@ -121,3 +123,22 @@ function save_review() {
 }
 add_action('wp_ajax_save_review', 'save_review');
 add_action('wp_ajax_nopriv_save_review', 'save_review');
+
+// Désactiver les commentaires pour le type de publication "lieu"
+function disable_comments_for_lieu() {
+    remove_post_type_support('lieu', 'comments');
+}
+add_action('init', 'disable_comments_for_lieu');
+
+
+
+ function save_comment_rating($comment_id) {
+    if (isset($_POST['rating']) && $_POST['rating'] !== '') {
+        $rating = intval($_POST['rating']);
+        if ($rating >= 1 && $rating <= 5) {
+            add_comment_meta($comment_id, 'rating', $rating);
+        }
+    }
+}
+add_action('comment_post', 'save_comment_rating');
+

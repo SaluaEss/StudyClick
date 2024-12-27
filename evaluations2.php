@@ -124,6 +124,7 @@ get_header();
     }
 </style>
 
+
 <div class="lieu-details">
     <?php
     if (isset($_GET['lieu_id'])) {
