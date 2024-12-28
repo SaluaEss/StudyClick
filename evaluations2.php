@@ -139,7 +139,7 @@ get_header();
 
             ?>
             <div class="review-form">
-                <h2>Donnez votre avis</h2>
+                <h2>Give your opinion</h2>
                 <form method="post" action="">
                     <div class="stars">
                         <?php for ($i = 1; $i <= 5; $i++) : ?>
@@ -147,9 +147,9 @@ get_header();
                         <?php endfor; ?>
                     </div>
                     <input type="hidden" name="rating" id="rating" value="0">
-                    <textarea name="review_content" placeholder="Écrivez votre avis ici..." required></textarea>
+                    <textarea name="review_content" placeholder="Write your review here..." required></textarea>
                     <input type="hidden" name="lieu_id" value="<?php echo $lieu_id; ?>">
-                    <button type="submit" name="submit_review">Poster un avis</button>
+                    <button type="submit" name="submit_review">Post a review</button>
                 </form>
             </div>
             <?php
@@ -173,12 +173,12 @@ get_header();
 
                     $review_id = wp_insert_post($review);
                     if ($review_id) {
-                        echo '<p style="color: green; text-align: center;">Votre avis a été enregistré avec succès !</p>';
+                        echo '<p style="color: green; text-align: center;">Your review has been successfully registered!</p>';
                     } else {
                         echo '<p class="error-message">Erreur lors de l\'enregistrement de l\'avis.</p>';
                     }
                 } else {
-                    echo '<p class="error-message">La note doit être entre 1 et 5 étoiles.</p>';
+                    echo '<p class="error-message">The rating must be between 1 and 5 stars.</p>';
                 }
             }
 
@@ -216,17 +216,17 @@ get_header();
                         endwhile;
                         wp_reset_postdata();
                     else :
-                        echo '<p>Aucun avis pour ce lieu.</p>';
+                        echo '<p>No reviews for this location.</p>';
                     endif;
                     ?>
                 </div>
             </div>
             <?php
         } else {
-            echo '<p class="error-message">Lieu introuvable ou invalide.</p>';
+            echo '<p class="error-message">Location not found or invalid.</p>';
         }
     } else {
-        echo '<p class="error-message">Aucun lieu sélectionné.</p>';
+        echo '<p class="error-message">No location selected.</p>';
     }
     ?>
 </div>

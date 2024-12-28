@@ -7,15 +7,15 @@ get_header();
   <div class="page-wrapper">
     <div class="form-wrapper">
       <form method="post" action="">
-          <h2>Connexion</h2> <!-- Le titre affiché avec la police Italiana -->
-          <input type="text" name="username" placeholder="Nom d'utilisateur" required>
-          <input type="password" name="password" placeholder="Mot de passe" required>
-          <button type="submit" name="login">Se connecter</button>
+          <h2>Connection</h2> <!-- Le titre affiché avec la police Italiana -->
+          <input type="text" name="username" placeholder="User name" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <button type="submit" name="login">Log in</button>
       </form>
 
       <!-- Lien vers inscription -->
       <div class="no-account">
-          <a href="<?php echo get_permalink(get_page_by_path('inscription')); ?>">Je n'ai pas de compte</a>
+          <a href="<?php echo get_permalink(get_page_by_path('inscription')); ?>">I don't have an account</a>
       </div>
 
       <?php
@@ -31,10 +31,10 @@ get_header();
           $user = wp_signon($creds, false);
 
           if (is_wp_error($user)) {
-              echo "<p class='error-message'>Nom d'utilisateur ou mot de passe incorrect.</p>";
+              echo "<p class='error-message'>Incorrect username or password.</p>";
           } else {
               // Redirection vers la page d'accueil après connexion
-              wp_safe_redirect(home_url());
+              wp_safe_redirect(get_permalink(get_page_by_path('workspace'))); // Redirige vers une page après connexion
               exit; // Assurez-vous de quitter après la redirection
           }
       }

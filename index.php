@@ -93,6 +93,7 @@ get_header(); ?>
         .most-popular-page .image-container:hover .hover-overlay {
             opacity: 1;
         }
+        
 
         
     </style>
@@ -118,12 +119,13 @@ get_header(); ?>
                 while ($recent_posts->have_posts()) : $recent_posts->the_post(); ?>
                     <div class="image-container">
                         <a href="<?php the_permalink(); ?>">
-                            <?php if (has_post_thumbnail()) : ?>
-                                <?php the_post_thumbnail('large', ['class' => 'custom-img']); ?>
-
-                            <?php else : ?>
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/default.jpg" alt="Default Image" class="custom-img">
-                            <?php endif; ?>
+                        <?php 
+if (has_post_thumbnail()) { 
+    the_post_thumbnail('large', ['class' => 'custom-img']); 
+} else { 
+    echo '<img src="' . get_template_directory_uri() . '/images/default.jpg" class="custom-img" alt="Default Image">';
+} 
+?>
                         </a>
                         <div class="hover-overlay">
                             <p><b><?php the_title(); ?></b><br><?php echo get_post_meta(get_the_ID(), 'adresse', true); ?></p>
@@ -131,7 +133,7 @@ get_header(); ?>
                     </div>
                 <?php endwhile;
             else : ?>
-                <p>Aucune publication récente trouvée.</p>
+                <p>No recent posts found.</p>
             <?php endif;
             wp_reset_postdata(); ?>
         </section>

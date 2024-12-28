@@ -3,12 +3,19 @@
 
         <!-- Icônes réseaux sociaux -->
         <div style="margin-bottom: 20px;">
-            <img src="<?php echo wp_get_attachment_image_url(24); ?>" alt="Description image 1" class="img-fluid rounded me-2" style="width: 40px;">
-            <a href="https://www.instagram.com/study._.click?igsh=MTZvb2JmbjVvMG53Yw==" target="_blank" style="text-decoration: none;">
-    <img src="<?php echo wp_get_attachment_image_url(25); ?>" alt="Instagram" class="img-fluid rounded me-2" style="width: 30px;">
-</a>
+    <img src="<?php echo get_template_directory_uri();?>/Logo réseaux sociaux/tiktok-logo-thin.svg" 
+         alt="" 
+         class="img-fluid custom-img" 
+         style="width: 20px; height: auto;"> <!-- Taille réduite -->
+         
+    <a href="https://www.instagram.com/study._.click?igsh=MTZvb2JmbjVvMG53Yw==" target="_blank" style="text-decoration: none;">
+        <img src="<?php echo get_template_directory_uri();?>/Logo réseaux sociaux/logo-instagram-noir-png.webp" 
+             alt="" 
+             class="img-fluid custom-img" 
+             style="width: 20px; height: auto;"> <!-- Taille réduite -->
+    </a>
+</div>
 
-        </div>
 
         <!-- Citation cliquable -->
         <p style="margin: 10px auto; font-size: 18px; line-height: 1.6; max-width: 600px; font-family: 'Italiana', serif;">
@@ -37,4 +44,3 @@
 
     </div>
 </footer>
- 

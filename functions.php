@@ -51,6 +51,7 @@ add_filter('query_vars', function ($query_vars) {
     return $query_vars;
 });
 
+
 // Ajout de métadonnées pour les lieux
 function add_lieu_meta_boxes() {
     add_meta_box('lieu_details', 'Détails du lieu', 'lieu_meta_box_callback', 'lieu', 'normal', 'high');
@@ -175,3 +176,73 @@ add_image_size('custom-size', 400, 300, true); // 400x300 pixels, recadrage forc
 
 
 
+function create_cpt_lieu() {
+    register_post_type('lieu', array(
+        'labels' => array(
+            'name' => 'Lieux',
+            'singular_name' => 'Lieu',
+            'add_new' => 'Ajouter un lieu',
+            'add_new_item' => 'Ajouter un nouveau lieu',
+            'edit_item' => 'Modifier le lieu',
+            'new_item' => 'Nouveau lieu',
+            'view_item' => 'Voir le lieu',
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'rewrite' => array('slug' => 'lieux'),
+        'taxonomies' => array('category'), // Associer les catégories
+        'show_in_rest' => true, // Activer l'éditeur Gutenberg si nécessaire
+    ));
+}
+add_action('init', 'create_cpt_lieu');
+
+function debug_post_meta($post_id) {
+    error_log(print_r(get_post_meta($post_id), true));
+}
+add_action('save_post', 'debug_post_meta');
+
+
+function register_my_menus() {
+    register_nav_menus(
+        array(
+            'menu-principale' => __('Menu En-tête'),
+        )
+    );
+}
+add_action('init', 'register_my_menus');
+function enqueue_styles_and_scripts() {
+    // Ajout de Bootstrap
+    wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+    wp_enqueue_script('bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array('jquery'), null, true);
+
+    // Ajout des styles personnalisés
+    wp_enqueue_style('theme-style', get_stylesheet_uri());
+}
+add_action('wp_enqueue_scripts', 'enqueue_styles_and_scripts');
+function allow_heic_upload($mime_types) {
+    $mime_types['heic'] = 'image/heic';
+    return $mime_types;
+}
+add_filter('upload_mimes', 'allow_heic_upload');
+
+
+function custom_mime_types($mime_types) {
+    $mime_types['jpg|jpeg'] = 'image/jpeg'; // Ajout des fichiers JPEG
+    $mime_types['gif'] = 'image/gif'; // Ajout des fichiers GIF
+    $mime_types['heic'] = 'image/heic'; // Ajout des fichiers HEIC
+    return $mime_types;
+}
+add_filter('upload_mimes', 'custom_mime_types');
+function restrict_access_to_pages() {
+    if (!is_user_logged_in()) {
+        // Liste des pages protégées (remplace les slugs par ceux de tes pages)
+        $protected_pages = ['workspace', 'evaluations'];
+
+        if (is_page($protected_pages)) {
+            wp_redirect(get_permalink(get_page_by_path('warning'))); // Redirige vers warning
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'restrict_access_to_pages');

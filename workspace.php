@@ -2,6 +2,12 @@
 /** Template Name: Workspace - Page */
 get_header();
 ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(get_permalink(get_page_by_path('warning'))); // Redirige vers la page warning
+    exit; // Arrête l'exécution pour éviter d'afficher du contenu
+}
+?>
 <main>
   <style>
       /* Chargement de la police Italiana */
@@ -10,7 +16,7 @@ get_header();
       body {
           margin: 0;
           font-family: Arial, sans-serif;
-          background-color: #f8f8f8;
+          background-color: #fff;
       }
 
       .container {
@@ -32,15 +38,34 @@ get_header();
       }
 
       .card {
-          border: 1px solid #ddd;
-          border-radius: 0px;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
+    background-color: #fff; /* Fond blanc pour la carte */
+    border: 1px solid #ddd; /* Bordure discrète */
+    border-radius: 8px; /* Coins arrondis */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Empêche les débordements */
+}
 
-      .card:hover {
-          transform: scale(1.05);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
+.card:hover {
+    background-color: transparent; /* Ou une autre couleur souhaitée */
+    box-shadow: none !important; /* Supprime toute ombre */
+    border: 1px solid #ddd; /* Réapplique la bordure si nécessaire */
+    transition: none; /* Évite des animations non désirées */
+}
+
+.card-body:hover {
+    border: none !important; /* Supprime toute bordure */
+}
+
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Assure un espace équilibré entre les éléments */
+    align-items: flex-start; /* Par défaut, aligne les éléments à gauche */
+    background-color: transparent;
+}
+
 
       .card-title {
           font-size: 1.25rem;
@@ -54,20 +79,21 @@ get_header();
       }
 
       .btn {
-          background-color: #CEE1B6;
-          color: #fff;
-          border: none;
-          border-radius: 4px;
-          padding: 8px 16px;
-          text-decoration: none;
-          transition: background-color 0.3s ease;
-          
-      }
-
-      .btn:hover {
-          background-color: #CEE1B6;
-      }
-
+    align-self: flex-end; /* Aligne le bouton à droite */
+    margin-top: 10px; /* Ajoute un espace en haut du bouton */
+    background-color: #D7E2D1; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Pas de soulignement */
+    border: none; /* Pas de bordure */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    
+    
+}
+.btn:hover {
+    background-color: #94c89c; /* Fond plus sombre au survol */
+    text-decoration: none; /* Pas de soulignement au survol */
+    transform: scale(1.05); /* Légère mise en avant */
+}
       .search-bar {
     display: flex;
     justify-content: center;
@@ -95,6 +121,16 @@ get_header();
     width: 25px;
     height: 25px;
 }
+.element {
+  position: relative;
+  top: 0;
+  transition: top 0.5s ease; /* Animation fluide */
+}
+
+.element:hover {
+  top: 20px; /* L'élément descend quand on passe la souris */
+}
+
 
   </style>
 

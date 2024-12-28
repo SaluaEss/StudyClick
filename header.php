@@ -24,15 +24,20 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainMenu">
-                    <?php 
-                    wp_nav_menu( array(
-                        'theme_location' => 'menu-principale',
-                        'container' => false,
-                        'menu_class' => 'navbar-nav mx-auto gap-3',
-                        'add_li_class' => 'nav-item',
-                        'link_class' => 'nav-link'
-                    ) );
-                    ?>
+                <?php 
+if (has_nav_menu('menu-principale')) {
+    wp_nav_menu(array(
+        'theme_location' => 'menu-principale',
+        'container' => false,
+        'menu_class' => 'navbar-nav mx-auto gap-3',
+        'add_li_class' => 'nav-item',
+        'link_class' => 'nav-link',
+    ));
+} else {
+    echo '<p style="color: red;">Aucun menu assigné. Allez dans Apparence > Menus pour configurer le menu principal.</p>';
+}
+?>
+
                 </div>
             </nav>
         </div>
@@ -56,16 +61,20 @@
    }
 
    .navbar-nav .nav-link {
-       font-size: 16px;
-       color: #FFFFFF ;
-       font-weight: 500;
-       padding: 10px 15px;
-       transition: color 0.3s;
-   }
+    font-size: 16px;
+    color: #000 !important; /* Texte noir */
+    font-weight: 500;
+    text-decoration: none; /* Retire le soulignement par défaut */
+    padding: 10px 15px;
+    transition: color 0.3s, text-decoration 0.3s; /* Transition pour un effet doux */
+}
 
-   .navbar-nav .nav-link:hover {
-       color: #FFFFFF ;
-   }
+.navbar-nav .nav-link:hover {
+    color: #CEE1B6 !important; /* Vert clair au survol */
+    text-decoration: underline; /* Ajoute le soulignement au survol */
+}
+
+
 
    .navbar-toggler {
        border: none;
@@ -91,6 +100,7 @@
        }
    }
 </style>
+
 
 <?php wp_footer(); ?>
 </body>

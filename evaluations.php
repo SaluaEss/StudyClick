@@ -2,9 +2,17 @@
 /** Template Name: evaluations - Page */
 get_header();
 ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(get_permalink(get_page_by_path('warning'))); // Redirige vers la page warning
+    exit; // Arrête l'exécution pour éviter d'afficher du contenu
+}
+?>
 <div class="search-bar">
     <input id="searchInput" type="text" placeholder="Rechercher..." onkeyup="filterCards()">
-    <button><img src="<?php echo wp_get_attachment_image_url(50); ?>" alt="Search Icon"></button>
+    <button>        <img src="<?php echo get_template_directory_uri();?>/Loupe icon/loupe-removebg-preview.png" alt="" class="img-fluid custom-img"> <!-- Ajout des classes manquantes -->
+
+    </button>
 </div>
 
 <script>
@@ -24,6 +32,7 @@ get_header();
 </script>
 
 <style>
+
     body {
         font-family: 'Inter', sans-serif;
         margin: 0;
@@ -58,7 +67,7 @@ get_header();
         height: 230px;
         border-radius: 0px;
         margin-right: 20px;
-        margin-left:0px;
+        margin-left: 0px;
         object-fit: cover;
         padding: 0px;
     }
@@ -68,11 +77,12 @@ get_header();
         flex-direction: column;
         justify-content: space-between;
         flex-grow: 1;
+        gap: 5px; /* Réduit l'espace entre les enfants */
     }
 
     .card-content h2 {
         font-size: 24px;
-        margin: 10px 0;
+        margin: 5px 0; /* Réduction des marges verticales */
         font-family: 'Italiana', serif; /* Applique la police Italiana à h2 */
         text-transform: uppercase; /* Met le texte en majuscules */
     }
@@ -80,7 +90,7 @@ get_header();
     .card-content .location {
         font-size: 14px;
         color: #666;
-        margin-top: 5px;
+        margin: 2px 0; /* Réduction de la marge entre l'adresse et les autres éléments */
     }
 
     .features {
@@ -95,48 +105,50 @@ get_header();
     }
 
     .rating {
-        margin-top: ;
         display: flex;
         align-items: center;
-
+        margin: 5px 0; /* Réduction de la marge au-dessus et en dessous */
     }
 
     .rating span {
         font-size: 18px;
         color: #ffc107;
-        margin-right: 5px;
+        margin-right: 3px; /* Réduit l'espace entre les étoiles */
     }
 
     .rating span.empty {
         color: #CEE1B6;
     }
+
     .search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
-}
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
 
-.search-bar input {
-    width: 60%;
-    padding: 10px 15px;
-    border: 2px solid #c0e2c8;
-    border-radius: 20px;
-    font-size: 16px;
-}
+    .search-bar input {
+        width: 60%;
+        padding: 10px 15px;
+        border: 2px solid #c0e2c8;
+        border-radius: 20px;
+        font-size: 16px;
+    }
 
-.search-bar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: -40px;
-    padding: 0;
-}
+    .search-bar button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: -40px;
+        padding: 0;
+    }
 
-.search-bar img {
-    width: 25px;
-    height: 25px;
-}
+    .search-bar img {
+        width: 25px;
+        height: 25px;
+    }
+
+
 </style>
 
 <h1>Evaluations</h1>
@@ -161,8 +173,8 @@ get_header();
             $prises = get_post_meta($lieu_id, 'prises', true);
             $note_generale = intval(get_post_meta($lieu_id, 'note_generale', true));
             ?>
-            <a href="<?php echo get_permalink(get_page_by_path('evaluations2')) . '?lieu_id=' . $lieu_id; ?>" style="text-decoration: none; color: inherit;">
-                <section class="evaluation-card">
+<a href="<?php echo get_permalink(get_page_by_title('Evaluations2')) . '?lieu_id=' . $lieu_id; ?>" style="text-decoration: none; color: inherit;">
+<section class="evaluation-card">
                     <?php if (has_post_thumbnail()) : ?>
                         <?php the_post_thumbnail('large', ['class' => 'custom-img']); ?>
                     <?php endif; ?>
@@ -184,6 +196,9 @@ get_header();
                     
                 </section>
             </a>
+
+
+            
         <?php
         endwhile;
         wp_reset_postdata();

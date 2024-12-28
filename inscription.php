@@ -9,15 +9,15 @@ get_header();
       <?php echo do_shortcode(the_content()); ?>
       
       <form method="post" action="">
-          <h2>Inscription</h2>
-          <input type="text" name="username" placeholder="Nom d'utilisateur" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="password" name="password" placeholder="Mot de passe" required>
-          <button type="submit" name="register">S'inscrire</button>
+          <h2>Registration</h2>
+          <input type="text" name="username" placeholder="User name" required>
+          <input type="email" name="email" placeholder="E-mail" required>
+          <input type="password" name="password" placeholder="Password" required>
+          <button type="submit" name="register">Register</button>
 
           <!-- Lien vers connexion -->
           <div class="already-account">
-              <a href="<?php echo get_permalink(get_page_by_path('connexion')); ?>">J'ai déjà un compte</a>
+              <a href="<?php echo get_permalink(get_page_by_path('connexion')); ?>">I already have an account</a>
           </div>
       </form>
 
@@ -40,7 +40,7 @@ get_header();
                   ));
       
                   // Redirection vers la page d'accueil après inscription
-                  wp_redirect(home_url());
+                  wp_redirect(get_permalink(get_page_by_path('workspace'))); // Redirige vers une page après inscription
                   exit;
               } else {
                   echo "<p class='error-message'>Erreur lors de l'inscription : " . $user_id->get_error_message() . "</p>";
@@ -61,7 +61,7 @@ get_header();
 /* Styles généraux pour le body */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8;
+    background-color: #fff;
     margin: 0;
     padding: 0;
 }

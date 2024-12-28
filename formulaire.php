@@ -1,13 +1,23 @@
 <?php 
-/** Template Name: Formulaire - Page */
+ 
+/**
+ * Template Name: Formulaire - Page
+ */
+
 get_header(); ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(get_permalink(get_page_by_path('warning'))); // Redirige vers la page warning
+    exit; // Arrête l'exécution pour éviter d'afficher du contenu
+}
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un lieu</title>
+    <title>Add a location</title>
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
@@ -31,6 +41,8 @@ get_header(); ?>
             color: #333333;
             margin-bottom: 20px;
             font-size: 1.8rem;
+            font-family: 'Italiana', serif; /* Applique la police Italiana */
+
         }
 
         label {
@@ -157,22 +169,24 @@ get_header(); ?>
 </head>
 <body>
     <div class="container">
-        <h1>Ajouter un lieu</h1>
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
+        <h1>Add a location</h1>
+        <form method="POST" action="<?php echo esc_url(get_permalink()); ?>" enctype="multipart/form-data">
+
+
             <!-- Nom -->
-            <label for="nom">Nom *</label>
-            <input type="text" id="nom" name="nom" placeholder="Entrer le nom du lieu" required>
+            <label for="nom">Name *</label>
+            <input type="text" id="nom" name="nom" placeholder="Enter the name of the place" required>
 
             <!-- Adresse -->
-            <label for="adresse">Adresse *</label>
-            <input type="text" id="adresse" name="adresse" placeholder="Entrer l'adresse du lieu" required>
+            <label for="adresse">Address *</label>
+            <input type="text" id="adresse" name="adresse" placeholder="Enter the address of the place" required>
 
             <!-- Description -->
             <label for="description">Description *</label>
-            <textarea id="description" name="description" placeholder="Décrivez le lieu !" required></textarea>
+            <textarea id="description" name="description" placeholder="Describe the place!" required></textarea>
 
             <!-- Items -->
-            <label>Équipements disponibles :</label>
+            <label>Equipment available:</label>
             <div class="items-list">
                 <label>
                     <input type="checkbox" name="items[]" value="Wi-Fi">
@@ -180,17 +194,17 @@ get_header(); ?>
                 </label>
                 <label>
                     <input type="checkbox" name="items[]" value="Prises">
-                    <span>Prises</span>
+                    <span>Electrical outlets</span>
                 </label>
                 <label>
                     <input type="checkbox" name="items[]" value="Ordinateurs">
-                    <span>Ordinateurs</span>
+                    <span>Computers</span>
                 </label>
             </div>
 
             <!-- Photo -->
             <div class="photo-upload">
-                <label for="photos" class="photo-upload-label">Ajouter des photos :</label>
+                <label for="photos" class="photo-upload-label">Add photos:</label>
                 <input type="file" id="photos" name="photos[]" multiple accept="image/*">
             </div>
 
@@ -207,8 +221,8 @@ get_header(); ?>
 
             <!-- Boutons -->
             <div>
-                <button type="button" class="cancel" onclick="window.location.href='<?php echo site_url('/'); ?>'">Annuler</button>
-                <button type="submit" class="submit">Soumettre</button>
+                <button type="button" class="cancel" onclick="window.location.href='<?php echo site_url('/'); ?>'">Cancel</button>
+                <button type="submit" class="submit">Submit</button>
             </div>
         </form>
 
@@ -235,7 +249,7 @@ get_header(); ?>
             if ($lieu_id && !empty($_FILES['photos']['name'][0])) {
                 require_once(ABSPATH . 'wp-admin/includes/file.php');
                 require_once(ABSPATH . 'wp-admin/includes/image.php');
-
+            
                 foreach ($_FILES['photos']['name'] as $key => $value) {
                     $file = [
                         'name' => $_FILES['photos']['name'][$key],
@@ -244,27 +258,38 @@ get_header(); ?>
                         'error' => $_FILES['photos']['error'][$key],
                         'size' => $_FILES['photos']['size'][$key],
                     ];
-
+            
                     $upload = wp_handle_upload($file, ['test_form' => false]);
+            
                     if (isset($upload['file'])) {
+                        // Ajouter l'image comme pièce jointe
                         $attachment_id = wp_insert_attachment([
                             'post_mime_type' => $upload['type'],
                             'post_title'     => sanitize_file_name($file['name']),
                             'post_content'   => '',
                             'post_status'    => 'inherit',
                         ], $upload['file'], $lieu_id);
-
-                        $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
-                        wp_update_attachment_metadata($attachment_id, $attachment_data);
-                        set_post_thumbnail($lieu_id, $attachment_id);
+            
+                        // Générer les métadonnées pour l'image et l'associer
+                        if (!is_wp_error($attachment_id)) {
+                            $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                            wp_update_attachment_metadata($attachment_id, $attachment_data);
+            
+                            // Associer comme image à la une
+                            set_post_thumbnail($lieu_id, $attachment_id);
+                        } else {
+                            error_log("Failed to insert attachment for post ID: $lieu_id");
+                        }
+                    } else {
+                        error_log("Upload failed for file: " . $file['name']);
                     }
                 }
             }
 
             if ($lieu_id) {
-                echo '<p>Votre lieu a été publié avec succès !</p>';
+                echo '<p>Your location has been successfully published!</p>';
             } else {
-                echo '<p>Une erreur est survenue. Veuillez réessayer.</p>';
+                echo '<p>An error has occurred. Please try again.</p>';
             }
         }
         // Ajout à la page "Évaluations"
@@ -280,7 +305,11 @@ get_header(); ?>
                 wp_set_post_terms($lieu_id, $evaluation_category['term_id'], 'category', true);
             }
         }
-
+        if (empty($nom) || empty($adresse) || empty($description)) {
+            echo '<p>Please fill in all required fields.</p>';
+            return;
+        }
+        
         ?>
     </div>
 
@@ -302,6 +331,9 @@ get_header(); ?>
                 ratingInput.value = star.getAttribute('data-value');
             });
         });
+
+        
+
     </script>
 
     

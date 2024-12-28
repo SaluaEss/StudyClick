@@ -2,6 +2,12 @@
 /** Template Name: myaccount - Page */
 get_header();
 ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(get_permalink(get_page_by_path('warning'))); // Redirige vers la page warning
+    exit; // Arrête l'exécution pour éviter d'afficher du contenu
+}
+?>
 
 
 <style>
