@@ -11,7 +11,7 @@ get_header();
     <style>
     /* Appliquer uniquement au contenu de la page grâce à la classe "warning-page" */
     .warning-page {
-        font-family: Arial, sans-serif;
+        font-family: 'Inter', sans-serif;
         margin: 0;
         padding: 0;
         background-color: #fff;
@@ -20,6 +20,7 @@ get_header();
         align-items: center;
         height: 100vh;
     }
+
     .warning-page .container {
         text-align: center;
         border: 1px solid #D0E3CE;
@@ -30,17 +31,20 @@ get_header();
         max-width: 500px; /* Limite la largeur maximale */
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
+
     .warning-page .container p {
         font-size: 18px;
         color: #333;
         margin-bottom: 20px;
     }
+
     .warning-page .buttons {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
     }
+
     .warning-page .button {
         padding: 10px 20px;
         border-radius: 5px;
@@ -52,18 +56,22 @@ get_header();
         width: 120px; /* Fixe une largeur minimum pour une mise en page uniforme */
         transition: background-color 0.3s ease;
     }
+
     .warning-page .register {
         background-color: #fff;
         color: #333;
     }
+
     .warning-page .register:hover {
         background-color: #D0E3CE;
     }
+
     .warning-page .login {
         background-color: #8DBD8B;
         color: #fff;
         border: none;
     }
+
     .warning-page .login:hover {
         background-color: #6CA46A;
     }
@@ -73,9 +81,11 @@ get_header();
         .warning-page .container {
             padding: 20px;
         }
+
         .warning-page .container p {
             font-size: 16px;
         }
+
         .warning-page .button {
             width: 100%; /* Les boutons occupent toute la largeur */
         }

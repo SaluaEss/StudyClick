@@ -3,118 +3,112 @@
 get_header();
 ?>
 <div class="container my-5 single-lieu"> <!-- Ajouter la classe 'single-lieu' ici -->
-    <style>
-        .single-lieu body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-        }
-        .single-lieu .card {
-            max-width: 800px;
-            margin: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            background: #fff;
-            padding: 20px;
-        }
-        .single-lieu .card img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .single-lieu .card h1 {
-            font-size: 28px;
-            font-weight: bold;
-            margin: 20px 0 10px;
-        }
-        .single-lieu .card .adresse {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-        .single-lieu .card .rating {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .single-lieu .card .rating span {
-            font-size: 20px;
-            color: #CEE1B6;
-            margin-right: 5px;
-        }
-        .single-lieu .card .rating span.empty {
-            color: #ddd;
-        }
-        .single-lieu .card p {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #333;
-        }
-        .single-lieu .card .items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 10px 0;
-        }
-        .single-lieu .card .items span {
-            background-color: #f5f5f5;
-            border-radius: 12px;
-            padding: 5px 10px;
-            font-size: 12px;
-            color: #555;
-        }
-       
-        
-        .single-lieu .card .actions {
-            display: flex;
-            justify-content: flex-start;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .single-lieu .card .actions svg {
-            width: 24px;
-            height: 24px;
-            fill: #666;
-            cursor: pointer;
-        }
-        .single-lieu .card .actions svg:hover {
-            fill: #333;
-        }
+<style>
+    .single-lieu body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fff;
+    }
+    .single-lieu .card {
+        max-width: 800px;
+        margin: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        padding: 20px;
+    }
+    .single-lieu .card img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .single-lieu .card h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 20px 0 10px;
+    }
+    .single-lieu .card .adresse {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+    .single-lieu .card .rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .single-lieu .card .rating span {
+        font-size: 20px;
+        color: #CEE1B6;
+        margin-right: 5px;
+    }
+    .single-lieu .card .rating span.empty {
+        color: #ddd;
+    }
+    .single-lieu .card p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+    }
+    .single-lieu .card .items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 10px 0;
+    }
+    .single-lieu .card .items span {
+        background-color: #f5f5f5;
+        border-radius: 12px;
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #555;
+    }
 
-        .single-lieu .card .like-button,
-.single-lieu .card .favorite-button {
-    color: #FFFFFF; /* Couleur du texte et des icônes */
-    background-color: #CEE1B6; /* Vert pour le fond du bouton */
-    border-color: #CEE1B6; /* Vert pour les bordures */
-    border-radius: 5px; /* Ajoutez un peu de courbure si souhaité */
-    padding: 5px 10px; /* Taille réduite */
-    display: flex; /* Pour aligner texte et icône */
-    align-items: center;
-    gap: 5px; /* Espace entre le texte et l'icône */
-    font-size: 14px; /* Texte légèrement plus petit */
-    font-weight: bold; /* Texte en gras */
-    cursor: pointer; /* Change le curseur au survol */
-  
-}
+    .single-lieu .card .actions {
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        margin-top: 15px;
+    }
+    .single-lieu .card .actions svg {
+        width: 24px;
+        height: 24px;
+        fill: #666;
+        cursor: pointer;
+    }
+    .single-lieu .card .actions svg:hover {
+        fill: #333;
+    }
 
+    .single-lieu .card .like-button,
+    .single-lieu .card .favorite-button {
+        color: #FFFFFF; /* Couleur du texte et des icônes */
+        background-color: #CEE1B6; /* Vert pour le fond du bouton */
+        border-color: #CEE1B6; /* Vert pour les bordures */
+        border-radius: 5px; /* Ajoutez un peu de courbure si souhaité */
+        padding: 5px 10px; /* Taille réduite */
+        display: flex; /* Pour aligner texte et icône */
+        align-items: center;
+        gap: 5px; /* Espace entre le texte et l'icône */
+        font-size: 14px; /* Texte légèrement plus petit */
+        font-weight: bold; /* Texte en gras */
+        cursor: pointer; /* Change le curseur au survol */
+    }
 
+    .single-lieu .card .like-button svg,
+    .single-lieu .card .favorite-button svg {
+        fill: #FFFFFF; /* Couleur blanche pour les icônes SVG */
+        width: 18px; /* Taille des icônes réduite */
+        height: 18px;
+    }
 
-.single-lieu .card .like-button svg,
-.single-lieu .card .favorite-button svg {
-    fill: #FFFFFF; /* Couleur blanche pour les icônes SVG */
-    width: 18px; /* Taille des icônes réduite */
-    height: 18px;
-}
+    .single-lieu .card .like-text,
+    .single-lieu .card .favorite-text {
+        color: #FFFFFF; /* Couleur blanche pour le texte */
+    }
+</style>
 
-.single-lieu .card .like-text,
-.single-lieu .card .favorite-text {
-    color: #FFFFFF; /* Couleur blanche pour le texte */
-}
-
-
-
-    </style>
 
     <!-- Contenu principal de la page -->
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>

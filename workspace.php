@@ -10,34 +10,34 @@ if (!is_user_logged_in()) {
 ?>
 <main>
   <style>
-      /* Chargement de la police Italiana */
-      @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+   /* Chargement de la police Italiana */
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 
-      body {
-          margin: 0;
-          font-family: Arial, sans-serif;
-          background-color: #fff;
-      }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
 
-      .container {
-          padding: 20px;
-      }
+.container {
+    padding: 20px;
+}
 
-      .rectangle {
-          width: 100%;
-          height: 200px;
-          background-color: #D7E2D1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;  /* Texte en blanc */
-          font-size: 24px;
-          text-align: center;
-          font-family: 'Italiana', serif;  /* Application de la police Italiana */
-          margin-bottom: 20px; /* Ajoute une marge sous le rectangle */
-      }
+.rectangle {
+    width: 100%;
+    height: 200px;
+    background-color: #D7E2D1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Texte en blanc */
+    font-size: 24px;
+    text-align: center;
+    font-family: 'Italiana', serif; /* Application de la police Italiana */
+    margin-bottom: 20px; /* Ajoute une marge sous le rectangle */
+}
 
-      .card {
+.card {
     background-color: #fff; /* Fond blanc pour la carte */
     border: 1px solid #ddd; /* Bordure discrète */
     border-radius: 8px; /* Coins arrondis */
@@ -47,15 +47,9 @@ if (!is_user_logged_in()) {
 
 .card:hover {
     background-color: transparent; /* Ou une autre couleur souhaitée */
-    box-shadow: none !important; /* Supprime toute ombre */
     border: 1px solid #ddd; /* Réapplique la bordure si nécessaire */
     transition: none; /* Évite des animations non désirées */
 }
-
-.card-body:hover {
-    border: none !important; /* Supprime toute bordure */
-}
-
 
 
 .card-body {
@@ -66,19 +60,18 @@ if (!is_user_logged_in()) {
     background-color: transparent;
 }
 
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
 
-      .card-title {
-          font-size: 1.25rem;
-          font-weight: bold;
-          color: #333;
-      }
+.card-text {
+    display: none;
+}
 
-      .card-text {
-          font-size: 0.9rem;
-          color: #555;
-      }
 
-      .btn {
+.btn {
     align-self: flex-end; /* Aligne le bouton à droite */
     margin-top: 10px; /* Ajoute un espace en haut du bouton */
     background-color: #D7E2D1; /* Couleur de fond */
@@ -86,15 +79,15 @@ if (!is_user_logged_in()) {
     text-decoration: none; /* Pas de soulignement */
     border: none; /* Pas de bordure */
     transition: background-color 0.3s ease, transform 0.3s ease;
-    
-    
 }
+
 .btn:hover {
-    background-color: #94c89c; /* Fond plus sombre au survol */
-    text-decoration: none; /* Pas de soulignement au survol */
+    background-color: #A8C8A1; /* Fond plus sombre au survol */
     transform: scale(1.05); /* Légère mise en avant */
+    color: #fff
 }
-      .search-bar {
+
+.search-bar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,32 +98,9 @@ if (!is_user_logged_in()) {
     width: 60%;
     padding: 10px 15px;
     border: 2px solid #c0e2c8;
-    border-radius: 20px;
+    border-radius: 50px;
     font-size: 16px;
 }
-
-.search-bar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: -40px;
-    padding: 0;
-}
-
-.search-bar img {
-    width: 25px;
-    height: 25px;
-}
-.element {
-  position: relative;
-  top: 0;
-  transition: top 0.5s ease; /* Animation fluide */
-}
-
-.element:hover {
-  top: 20px; /* L'élément descend quand on passe la souris */
-}
-
 
   </style>
 
@@ -140,8 +110,7 @@ if (!is_user_logged_in()) {
   </div>
 
   <div class="search-bar">
-    <input id="searchInput" type="text" placeholder="Rechercher..." onkeyup="filterCards()">
-    <button><img src="<?php echo wp_get_attachment_image_url(50); ?>" alt="Search Icon"></button>
+    <input id="searchInput" type="text" placeholder="Research..." onkeyup="filterCards()">
 </div>
 
 
@@ -170,10 +139,11 @@ if (!is_user_logged_in()) {
                           <?php endif; ?>
                           <div class="card-body">
                               <h5 class="card-title"><?php the_title(); ?></h5>
-                              <p class="card-text"><strong>Adresse :</strong> <?php echo esc_html($adresse); ?></p>
+                              <p class="card-text"><strong>Adress :</strong> <?php echo esc_html($adresse); ?></p>
                               <p class="card-text"><strong>Note :</strong> <?php echo esc_html($rating); ?> / 5</p>
                               <p class="card-text"><strong>Items :</strong> <?php echo esc_html($items); ?></p>
-                              <a href="<?php the_permalink(); ?>" class="btn">Voir plus</a>
+                              
+                              <a href="<?php the_permalink(); ?>" class="btn">See more</a>
 
                           </div>
                       </div>

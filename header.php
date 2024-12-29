@@ -6,6 +6,8 @@
     <title><?php wp_title(); ?></title>
     <?php wp_head(); ?>
 </head>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+
 <body <?php body_class(); ?>>
 
 <header class="container-fluid" style="background-color: white;">
@@ -51,16 +53,24 @@ if (has_nav_menu('menu-principale')) {
     </div>
 </header>
 
-
 <style>
-   header {
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline; /* Ajoute le soulignement au survol */
+}
+
+header {
     background-color: white !important; /* Forcer le fond blanc */
 }
-   .navbar-nav {
-       gap: 20px; /* Ajoute un espace de 20px entre chaque rubrique */
-   }
 
-   .navbar-nav .nav-link {
+.navbar-nav {
+    gap: 20px; /* Ajoute un espace de 20px entre chaque rubrique */
+}
+
+.navbar-nav .nav-link {
     font-size: 16px;
     color: #000 !important; /* Texte noir */
     font-weight: 500;
@@ -74,33 +84,23 @@ if (has_nav_menu('menu-principale')) {
     text-decoration: underline; /* Ajoute le soulignement au survol */
 }
 
+.navbar-toggler {
+    border: none;
+}
 
+.navbar-toggler-icon {
+    background-color: #FFFFFF ;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='black' class='bi bi-list' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M3.5 12.5a.5.5 0 0 1 0-1h9a.5.5 0 0 1 0 1h-9zM3.5 8a.5.5 0 0 1 0-1h9a.5.5 0 0 1 0 1h-9zM3.5 3.5a.5.5 0 0 1 0-1h9a.5.5 0 0 1 0 1h-9z'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+}
 
-   .navbar-toggler {
-       border: none;
-   }
-
-   .navbar-toggler-icon {
-       background-color: #FFFFFF ;
-   }
-
-   .menu-icon img {
-       transition: transform 0.3s;
-   }
-
-   .menu-icon img:hover {
-       transform: scale(1.1);
-   }
-
-   @media (max-width: 768px) {
-       .navbar-collapse {
-           background-color: #FFFFFF ;
-           padding: 10px;
-           
-       }
-   }
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background-color: #FFFFFF ;
+        padding: 10px;
+    }
+}
 </style>
-
 
 <?php wp_footer(); ?>
 </body>

@@ -10,20 +10,34 @@ get_header();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mentions Légales - StudyClick</title>
     <style>
+         body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh; /* Assure que le body prend toute la hauteur de l'écran */
+            display: flex;
+            flex-direction: column;
+        }
+
+        footer {
+            margin-top: auto; /* Pousse le footer vers le bas */
+        }
+
         .mentions-legales {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #fff;
             color: #333;
         }
+
         .mentions-legales header {
             background-color: #fff;
             color: black;
             padding: 10px 20px;
             text-align: center;
         }
+
         .mentions-legales .container {
             max-width: 800px;
             margin: 20px auto;
@@ -31,11 +45,13 @@ get_header();
             background: white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         .mentions-legales h1, .mentions-legales h2 {
             color: #93d29d;
             font-family: 'Italiana', serif; /* Police Italiana */
             font-size: 25px;
         }
+
         .mentions-legales ul {
             list-style-type: disc;
             margin-left: 20px;

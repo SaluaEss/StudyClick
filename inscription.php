@@ -60,7 +60,7 @@ get_header();
 <style>
 /* Styles généraux pour le body */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -145,14 +145,5 @@ form button:hover {
     color: #6CA46A;
 }
 
-/* Conteneur des messages d'erreur */
-.error-messages {
-    color: red;
-    list-style: none;
-    padding: 0;
-}
 
-.error-messages li {
-    margin-bottom: 5px;
-}
 </style>

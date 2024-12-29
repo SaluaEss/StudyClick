@@ -5,41 +5,43 @@ get_header();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - StudyClick</title>
     <?php wp_head(); ?>
     <style>
-        /* Style global */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
+/* Style global */
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
 
-        h1 {
-            text-align: center;
-            margin: 40px 0 20px 0;
-            font-family: 'Italiana', serif;
-            font-size: 36px;
-            color: #333;
-            font-weight: normal;
-        }
+h1 {
+    text-align: center;
+    margin: 40px 0 20px 0;
+    font-family: 'Italiana', serif;
+    font-size: 36px;
+    color: #333;
+    font-weight: normal;
+}
 
-        /* Section principale */
-        .about-section {
+/* Section principale */
+.about-section {
     display: flex;
     flex-direction: column;
     align-items: center; /* Centre les éléments horizontalement */
     gap: 20px; /* Espacement entre les paragraphes */
 }
 
-        .about-section p {
-            margin: 15px 0;
-        }
+.about-section p {
+    margin: 15px 0;
+}
 
-        .left-aligned {
+.left-aligned {
     width: 50%;
     text-align: left; /* Aligne le texte à gauche */
     margin: 0 auto; /* Centre horizontalement le bloc */
@@ -55,39 +57,40 @@ get_header();
     font-weight: bold; /* Met en gras ou ajoute du style */
     color: #000; /* Personnalise la couleur si nécessaire */
 }
-        .quote-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 50px 0;
-        }
 
-        .quote-text {
-            font-family: 'Italiana', serif;
-            font-size: 40px;
-            flex: 1;
-            padding: 20px;
-            line-height: 1.8;
-            margin: 50px
-        }
+.quote-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 0;
+}
 
-        .quote-image img {
-            max-width: 300%;
-            border-radius: 0px;
-            width: 700px;
-            height:400px;
-            margin: 0px;
-        }
+.quote-text {
+    font-family: 'Italiana', serif;
+    font-size: 40px;
+    flex: 1;
+    padding: 20px;
+    line-height: 1.8;
+    margin: 20px; /* Réduction du margin */
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px 10px;
-            margin-top: 40px;
-            background-color: #f8f8f8;
-            font-size: 0.9em;
-            border-top: 1px solid #ddd;
-        }
+.quote-image img {
+    max-width: 100%; /* Limite la taille de l'image */
+    height: auto; /* Conserve les proportions */
+    width: 700px; /* Largeur spécifique */
+    height: 400px; /* Hauteur spécifique */
+    margin: 0px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
+    background-color: #f8f8f8;
+    font-size: 0.9em;
+    border-top: 1px solid #ddd;
+}
 
 /* rendre responsive*/
 /* Responsive pour mobiles */

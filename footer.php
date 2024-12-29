@@ -3,19 +3,18 @@
 
         <!-- Icônes réseaux sociaux -->
         <div style="margin-bottom: 20px;">
-    <img src="<?php echo get_template_directory_uri();?>/Logo réseaux sociaux/tiktok-logo-thin.svg" 
-         alt="" 
-         class="img-fluid custom-img" 
-         style="width: 20px; height: auto;"> <!-- Taille réduite -->
-         
-    <a href="https://www.instagram.com/study._.click?igsh=MTZvb2JmbjVvMG53Yw==" target="_blank" style="text-decoration: none;">
-        <img src="<?php echo get_template_directory_uri();?>/Logo réseaux sociaux/logo-instagram-noir-png.webp" 
-             alt="" 
-             class="img-fluid custom-img" 
-             style="width: 20px; height: auto;"> <!-- Taille réduite -->
-    </a>
-</div>
+            <img src="<?php echo get_template_directory_uri();?>/Logo réseaux sociaux/tiktok-logo-thin.svg" 
+                 alt="" 
+                 class="img-fluid custom-img" 
+                 style="width: 20px; height: auto;"> <!-- Taille réduite -->
 
+            <a href="https://www.instagram.com/study._.click?igsh=MTZvb2JmbjVvMG53Yw==" target="_blank" style="text-decoration: none;">
+                <img src="<?php echo get_template_directory_uri();?>/Logo réseaux sociaux/logo-instagram-noir-png.webp" 
+                     alt="" 
+                     class="img-fluid custom-img" 
+                     style="width: 20px; height: auto;"> <!-- Taille réduite -->
+            </a>
+        </div>
 
         <!-- Citation cliquable -->
         <p style="margin: 10px auto; font-size: 18px; line-height: 1.6; max-width: 600px; font-family: 'Italiana', serif;">
@@ -25,14 +24,17 @@
             </a>
         </p>
 
-        <!-- Logo principal -->
+        <!-- Logo principal avec redirection vers la page d'accueil -->
         <div style="margin: 10px auto;">
-            <img src="<?php echo get_template_directory_uri(); ?>/Logo StudyClick/Capture_d_écran_2024-12-06_à_14.54.26-removebg-preview.png" 
-                 alt="StudyClick Logo" 
-                 class="img-fluid custom-img" 
-                 style="width: 200px; height: auto;"> <!-- Taille ajustée -->
+            <a href="<?php echo home_url(); ?>"> <!-- Lien vers la page d'accueil -->
+                <img src="<?php echo get_template_directory_uri(); ?>/Logo StudyClick/Capture_d_écran_2024-12-06_à_14.54.26-removebg-preview.png" 
+                     alt="StudyClick Logo" 
+                     class="img-fluid custom-img" 
+                     style="width: 200px; height: auto;"> <!-- Taille ajustée -->
+            </a>
         </div>
         <br>
+
         <!-- Mentions légales -->
         <div style="margin-top: 20px; font-size: 14px;">
             <p>

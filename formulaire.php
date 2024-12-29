@@ -20,7 +20,7 @@ if (!is_user_logged_in()) {
     <title>Add a location</title>
     <style>
         body {
-            font-family: 'Poppins', Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: #fff;
             margin: 0;
             padding: 0;
@@ -48,24 +48,24 @@ if (!is_user_logged_in()) {
         label {
             display: block;
             font-weight: bold;
-            color: #000000
-            ;
+            color: #000000;
             margin: 15px 0 8px;
         }
 
         input[type="text"],
-        textarea,
-        input[type="file"] {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 1px solid #dddddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-            background-color: #fafafa;
-            transition: border-color 0.3s ease;
-        }
+textarea,
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #F2FBEF; /* Vert clair */
+    transition: border-color 0.3s ease;
+}
+
 
         input[type="text"]:focus,
         textarea:focus {

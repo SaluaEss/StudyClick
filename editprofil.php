@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Italiana&display=swap" rel="stylesheet"> <!-- Import de la police Italiana -->
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: white;
             margin: 0;
             padding: 0;
@@ -68,11 +68,7 @@
             font-weight: bold;
             color: #4d4d4d;
         }
-        .button-row .edit-button {
-            background-color: #d3e0d3;
-            color: white;
-            border: none;
-        }
+
     </style>
 </head>
 <body>

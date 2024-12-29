@@ -8,11 +8,10 @@ if (!is_user_logged_in()) {
     exit; // Arrête l'exécution pour éviter d'afficher du contenu
 }
 ?>
+<h1>Evaluations</h1>
 <div class="search-bar">
     <input id="searchInput" type="text" placeholder="Rechercher..." onkeyup="filterCards()">
-    <button>        <img src="<?php echo get_template_directory_uri();?>/Loupe icon/loupe-removebg-preview.png" alt="" class="img-fluid custom-img"> <!-- Ajout des classes manquantes -->
-
-    </button>
+    
 </div>
 
 <script>
@@ -93,16 +92,6 @@ if (!is_user_logged_in()) {
         margin: 2px 0; /* Réduction de la marge entre l'adresse et les autres éléments */
     }
 
-    .features {
-        font-size: 14px;
-        margin-top: 10px;
-        color: #333;
-    }
-
-    .features span {
-        margin-right: 15px;
-        font-weight: bold;
-    }
 
     .rating {
         display: flex;
@@ -131,27 +120,46 @@ if (!is_user_logged_in()) {
         width: 60%;
         padding: 10px 15px;
         border: 2px solid #c0e2c8;
-        border-radius: 20px;
+        border-radius: 50px;
         font-size: 16px;
     }
 
-    .search-bar button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-left: -40px;
-        padding: 0;
-    }
 
     .search-bar img {
         width: 25px;
         height: 25px;
     }
+    @media (max-width: 768px) {
+    .evaluation-card {
+        flex-direction: column;
+        align-items: center;
+        width: 90%; /* Réduit la largeur des cartes à 90% de l'écran */
+        margin: 10px auto;
+    }
+
+    .evaluation-card img {
+        width: 100%; /* L'image prend toute la largeur de son conteneur */
+        height: 150px; /* Définit une hauteur fixe pour l'image */
+        object-fit: cover; /* Assure que l'image couvre toute la zone sans déformer l'aspect */
+        margin-bottom: 15px;
+    }
+
+    .card-content {
+        text-align: center;
+    }
+    .rating {
+        display: flex;
+        justify-content: center; /* Centre les étoiles horizontalement sur mobile */
+        align-items: center; /* Centre les étoiles verticalement si nécessaire */
+        margin: 5px 0;
+    }
+}
+
 
 
 </style>
 
-<h1>Evaluations</h1>
+
 
 <main>
     <?php
