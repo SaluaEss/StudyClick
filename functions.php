@@ -246,3 +246,13 @@ function restrict_access_to_pages() {
     }
 }
 add_action('template_redirect', 'restrict_access_to_pages');
+function register_review_post_type() {
+    register_post_type('review', [
+        'label' => 'Reviews',
+        'public' => true,
+        'show_in_menu' => true,
+        'supports' => ['title', 'editor', 'custom-fields'],
+        'capability_type' => 'post',
+    ]);
+}
+add_action('init', 'register_review_post_type');

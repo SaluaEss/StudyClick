@@ -44,7 +44,7 @@ if (!is_user_logged_in()) {
         text-align: center;
         font-size: 36px;
         margin: 20px 0;
-        font-family: 'Italiana', serif; /* Applique la police Italiana */
+        font-family: 'Italiana', serif; 
     }
 
     .evaluation-card {

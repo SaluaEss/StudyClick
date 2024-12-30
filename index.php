@@ -11,7 +11,7 @@ get_header(); ?>
     <title>StudyClick - Most Recent</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Reprise du CSS que vous avez fourni */
+        
         .most-popular-page {
             font-family: 'Inter', sans-serif;
             color: #000;
